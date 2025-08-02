@@ -1,0 +1,43 @@
+employee> db.createCollection("emp");
+db.emp.insertMany( [{ name: "Sunil", department: "Computer", salary: 4000 }, 
+{ name: "Neha", department: "Chemistry", salary: 5000 }, 
+{ name: "Sumita", department: "Maths", salary: 8000 }, 
+{ name: "Rakesh", departrment: "Physics", salary: 5000 },
+ { name: "Subhash", department: "Biology", salary: 6000 }
+]
+);
+1)Sum of Salary
+
+employee> db.emp.aggregate([
+ {
+ $group: {
+ _id:null,
+ totalsalary:{$sum:"$salary"}
+ }
+ }
+ ]);
+
+2)	Average Salary 
+
+db.emp.aggregate([ 
+{ 
+$group: {
+ _id: null, 
+average: { $avg: "$salary" } 
+} 
+}
+]
+);
+
+3)Minimize Salary
+
+employee> db.emp.aggregate([ 
+{ 
+$group: { 
+_id: null, 
+minsalary: { $min: "$salary" } 
+} 
+}
+] 
+);
+

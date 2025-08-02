@@ -1,0 +1,14 @@
+1) Insert 10 records in the collection emp_personal_details and emp_professional_details
+db.emp_personal_details.insertMany( [ {emp_id:101,emp_name:"Sunil",Designation:"Manager",Salary:40000}, {emp_id:102,emp_name:"Rita",Designation:"Cloud Computing",Salary:6000}, {emp_id:103,emp_name:"Rahul",Designation:"Manager",Salary:5000}, {emp_id:104,emp_name:"Neha",Designation:"Web Developer",Salary:6000}, {emp_id:105,emp_name:"Hitesh",Designation:"Full Stack Developer",Salary:5000},
+{emp_id:106,emp_name:"Neha",Designation:"Web Developer",Salary:40000}, {emp_id:107,emp_name:"Sheetal",Designation:"Cloud Computing",Salary:5000}, {emp_id:108,emp_name:"Tina",Designation:”IT”,Salary:4000}, {emp_id:109,emp_name:"Girish",Designation:"Web Developer",Salary:7000}, {emp_id:110,emp_name:"Nikhil",Designation:"Full Stack Developer",Salary:5000}]);
+
+
+employee> db.emp_professional_details.insertMany( [ {emp_id:101,emp_name:"Sunil",Designation:"Manager",Salary:40000}, {emp_id:102,emp_name:"Rita",Designation:"Cloud Computer",Salary:6000}, {emp_id:103,emp_name:"Rahul",Designation:"Manager",Salary:5000}, {emp_id:104,emp_name:"Neha",Designation:"Web Developer",Salary:6000}, {emp_id:105,emp_name:"Hitesh",Designation:"Full Stack Developer",Salary:5000},
+{emp_id:106,emp_name:"Neha",Designation:"Web Developer",Salary:40000}, {emp_id:107,emp_name:"Sheetal",Designation:"Cloud Computing",Salary:5000}, {emp_id:108,emp_name:"Tina",Designation:”IT”,Salary:4000}, {emp_id:109,emp_name:"Girish",Designation:"Web Developer",Salary:7000}, {emp_id:110,emp_name:"Nikhil",Designation:"Full Stack Developer",Salary:5000}]);
+employee> db.emp_professional_details.find();
+
+2) Show all the employee having designation manager.
+employee> db.emp_professional_details.find({Designation:"Manager"});
+
+3) Show all the employee having salary 6000. 
+employee> db.emp_professional_details.find({Salary:6000});

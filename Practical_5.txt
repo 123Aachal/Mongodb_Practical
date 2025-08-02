@@ -1,0 +1,16 @@
+db.emp.insertMany( [{ emp_id:1,name: "Sunil", designation: "clerk", salary: 4000,mob:685866969 }, 
+{ emp_id:2,name: "Neha", designation: "Software Engineer", salary: 5000,mob:4758485949 }, 
+{ emp_id:3,name: "Sumita", designation: "clerk", salary: 8000,mob:9796858796 }, 
+{ emp_id:4,name: "Rakesh",designation: "Data Analyst", salary: 5000,mob:6859605060 }, 
+{ emp_id:5,name: "Subhash", designation: "Software Engineer", salary: 6000,mob:8667887876 }]);
+
+
+1)Create multiple indexes on emp_id,emp_name in collection emp_professional_details.
+
+
+db.emp.createIndex( { emp_id: 1,name:1})
+
+db.emp.getIndexes();
+
+db.emp.find();
+

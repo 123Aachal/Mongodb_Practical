@@ -1,0 +1,12 @@
+use employee;
+switched to db employee
+employee> db.createCollection('emp_personal_details');
+employee> db.emp_personal_details.insertOne(
+ {
+ emp_id:101,
+ emp_name:"Rohit",
+ emp_address:"Pune",
+ emp_DOB:new Date("2001-05-14"),
+ emp_age:24,
+ emp_mobilenumber:9855630267});
+employee> db.emp_personal_details.find();

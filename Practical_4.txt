@@ -1,0 +1,25 @@
+db.emp_personal_details.insertMany( [ {emp_id:101,emp_name:"Sunil",Designation:"Manager",Salary:40000,age:61,working_hours:46}, 
+{emp_id:102,emp_name:"Rita",Designation:"Cloud Computer",Salary:6000,age:50,working_hours:40}, {emp_id:103,emp_name:"Rahul",Designation:"accountant",Salary:5000,age:66,working_hours:44}, 
+{emp_id:104,emp_name:"Neha",Designation:"Web Developer",Salary:6000,age:40,working_hours:30}, {emp_id:105,emp_name:"Hitesh",Designation:"accountant",Salary:5000,age:64,working_hours:47}]);
+employee> db.emp_personal_details.updateMany(
+{$age:{$gt:60}},
+ {$set:{status:"retired"}}
+ );
+employee> db.emp_personal_details.find();
+
+
+1)	Update collection emp_professional_details , give incentive 5000 to employee whose working hours is greater than 45 per week.
+
+employee> db.emp_professional_details.updateMany( 
+{ working_hours: { $gt: 45 } }, 
+{ $set: { incentive: 5000 } } 
+);
+employee> db.emp_professional_details.find();
+
+2)	Add 1000 to salary employee whose designation is accountant.
+
+employee> db.emp_professional_details.updateMany( 
+{ Designation:"accountant" } ,
+{$inc:{Salary:1000} }
+);
+employee> db.emp_professional_details.find();

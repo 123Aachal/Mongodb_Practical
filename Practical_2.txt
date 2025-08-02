@@ -1,0 +1,10 @@
+employee> db.createCollection('emp_professional_details');
+employee> db.emp_professional_details.insertOne(
+{ 
+emp_id: 101,
+name: "Rohit",
+designation:"Software Engineer",
+ Salary:500000,
+ incentive:5000,
+ working_hours:9});
+employee> db.emp_professional_details.find();

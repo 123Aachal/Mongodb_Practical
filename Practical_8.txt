@@ -1,0 +1,24 @@
+db.emp.insertMany( [
+{ emp_id:1,name: "Sunil", designation: "clerk", salary: 4000,mob:685866969 }, 
+{ emp_id:2,name: "Neha", designation: "Software Engineer", salary: 5000,mob:4758485949 },
+{ emp_id:3,name: "Sumita", designation: "clerk", salary: 8000,mob:9796858796 }, 
+{ emp_id:4,name: "Rakesh",designation: "Data Analyst", salary: 5000,mob:6859605060 }, 
+{ emp_id:5,name: "Subhash", designation: "Software Engineer", salary: 6000,mob:["57485886858","8667887876"] 
+}
+]);
+
+1)Use unwind command and show the employee whose mobile number is stored in array.
+db.emp.aggregate([
+{$unwind:”$mob”}
+]);
+
+2) Use skip command to skip first 3 records and display rest of records.
+db.emp.aggregate([
+{$skip:3}
+ ]);
+
+3)Use limit command to show only first 4 records of collection.
+db.emp.aggregate([
+ {$limit:4}
+ ]);
+
