@@ -1,0 +1,24 @@
+// Use database
+use employeeDB
+
+// Insert sample data into emp_professional_details collection
+db.emp_professional_details.insertMany([
+  { emp_id: 1, emp_name: "Amit Sharma", designation: "Manager", salary: 8000, incentive: 2000, working_hours: 48 },
+  { emp_id: 2, emp_name: "Priya Singh", designation: "Software Engineer", salary: 7000, incentive: 1500, working_hours: 42 },
+  { emp_id: 3, emp_name: "Rahul Verma", designation: "Accountant", salary: 6000, incentive: 1000, working_hours: 40 },
+  { emp_id: 4, emp_name: "Sunita Patel", designation: "Manager", salary: 8500, incentive: 2500, working_hours: 50 },
+  { emp_id: 5, emp_name: "Ramesh Kumar", designation: "Clerk", salary: 5000, incentive: 500, working_hours: 38 }
+])
+
+// Aggregation query to calculate sum, avg, min, and max salary
+db.emp_professional_details.aggregate([
+  {
+    $group: {
+      _id: null,
+      totalSalary: { $sum: "$salary" },
+      avgSalary: { $avg: "$salary" },
+      minSalary: { $min: "$salary" },
+      maxSalary: { $max: "$salary" }
+    }
+  }
+])

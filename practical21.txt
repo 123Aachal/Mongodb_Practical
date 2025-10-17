@@ -1,0 +1,44 @@
+// Use database
+use restaurantDB
+
+// Insert sample data
+db.restaurants.insertMany([
+  {
+    restaurant_id: 1,
+    name: "Sunny Side Cafe",
+    borough: "Manhattan",
+    cuisine: "American",
+    grades: [
+      { date: new Date("2023-01-10"), grade: "A", score: 8 },
+      { date: new Date("2022-11-15"), grade: "B", score: 12 }
+    ]
+  },
+  {
+    restaurant_id: 2,
+    name: "Ocean Breeze",
+    borough: "Brooklyn",
+    cuisine: "Seafood",
+    grades: [
+      { date: new Date("2023-03-05"), grade: "A", score: 15 },
+      { date: new Date("2022-12-22"), grade: "A", score: 9 }
+    ]
+  },
+  {
+    restaurant_id: 3,
+    name: "Green Garden",
+    borough: "Queens",
+    cuisine: "Vegetarian",
+    grades: [
+      { date: new Date("2023-02-18"), grade: "C", score: 11 },
+      { date: new Date("2022-10-10"), grade: "B", score: 7 }
+    ]
+  }
+])
+
+// Query: Find restaurants with any score not more than 10
+db.restaurants.find(
+  { "grades.score": { $lte: 10 } },
+  { restaurant_id: 1, name: 1, borough: 1, cuisine: 1, _id: 0 }
+)
+
+

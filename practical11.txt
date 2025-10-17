@@ -1,0 +1,41 @@
+// 1. Use the database
+use restaurantDB
+
+// 2. Insert sample data
+db.restaurants.insertMany([
+  {
+    restaurant_id: 1,
+    name: "Spice Villa",
+    borough: "Mumbai",
+    cuisine: "Indian",
+    building_number: "123",
+    street_name: "MG Road",
+    zip_code: "400001",
+    coordinates: { longitude: 73.8567, latitude: 18.5204 },
+    grades: [
+      { date: ISODate("2024-01-15"), grade: "A", score: 95 }
+    ]
+  },
+  {
+    restaurant_id: 2,
+    name: "Bronx Diner",
+    borough: "Bronx",
+    cuisine: "American",
+    building_number: "45",
+    street_name: "Fordham Road",
+    zip_code: "10458",
+    coordinates: { longitude: -73.9030, latitude: 40.8620 },
+    grades: [
+      { date: ISODate("2023-11-12"), grade: "B", score: 85 }
+    ]
+  }
+])
+
+// 3. Display restaurant_id, name, borough, and cuisine (without _id)
+db.restaurants.find(
+  {},
+  { restaurant_id: 1, name: 1, borough: 1, cuisine: 1, _id: 0 }
+)
+
+// 4. Display all restaurants in the borough "Bronx"
+db.restaurants.find({ borough: "Bronx" })

@@ -1,0 +1,14 @@
+// Use database
+use restaurantDB
+
+// Insert sample data
+db.restaurants.insertMany([
+  { restaurant_id: 1, name: "Wilson's Diner", borough: "Manhattan", cuisine: "American" },
+  { restaurant_id: 2, name: "Green Garden", borough: "Queens", cuisine: "Vegetarian" },
+  { restaurant_id: 3, name: "Spice Hub", borough: "Brooklyn", cuisine: "Indian" },
+  { restaurant_id: 4, name: "China Palace", borough: "Bronx", cuisine: "Chinese" },
+  { restaurant_id: 5, name: "Wild Orchid", borough: "Manhattan", cuisine: "Thai" }
+])
+
+// Query to sort by cuisine ascending and borough descending
+db.restaurants.find().sort({ cuisine: 1, borough: -1 })

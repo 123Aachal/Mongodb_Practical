@@ -1,0 +1,16 @@
+// Use database
+use restaurantDB
+
+// Insert sample records
+db.restaurants.insertMany([
+  { restaurant_id: 1, name: "Spices", borough: "Mumbai", cuisine: "Indian", grades: [ { date: "2024-01-10", grade: "A", score: 90 } ] },
+  { restaurant_id: 2, name: "Delices", borough: "Delhi", cuisine: "French", grades: [ { date: "2024-02-15", grade: "B", score: 85 } ] },
+  { restaurant_id: 3, name: "Flavors", borough: "Pune", cuisine: "Italian", grades: [ { date: "2024-03-20", grade: "A", score: 88 } ] },
+  { restaurant_id: 4, name: "Choices", borough: "Bangalore", cuisine: "Chinese", grades: [ { date: "2024-04-25", grade: "A", score: 92 } ] }
+])
+
+// Query to find restaurants with names ending with "ces"
+db.restaurants.find(
+  { name: { $regex: /ces$/ } },
+  { restaurant_id: 1, name: 1, borough: 1, cuisine: 1, _id: 0 }
+)

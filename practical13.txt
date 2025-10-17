@@ -1,0 +1,16 @@
+// 1. Use the database
+use restaurantDB
+
+// 2. Insert 3 sample records into restaurants collection
+db.restaurants.insertMany([
+  { restaurant_id: 1, name: "Spice Villa", borough: "Mumbai", cuisine: "Indian", grades: [ { date: "2024-01-15", grade: "A", score: 92 } ] },
+  { restaurant_id: 2, name: "Bronx Diner", borough: "Bronx", cuisine: "American", grades: [ { date: "2024-03-12", grade: "B", score: 85 } ] },
+  { restaurant_id: 3, name: "Green Garden", borough: "Delhi", cuisine: "Chinese", grades: [ { date: "2024-05-10", grade: "A", score: 78 } ] }
+])
+
+// 3. Find restaurants with score greater than 90
+db.restaurants.find({ "grades.score": { $gt: 90 } })
+
+// 4. Find restaurants with score more than 80 but less than 100
+db.restaurants.find({ "grades.score": { $gt: 80, $lt: 100 } })
+ 

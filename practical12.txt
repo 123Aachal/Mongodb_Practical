@@ -1,0 +1,22 @@
+// 1. Use the database
+use restaurantDB
+
+// 2. Insert 10 sample restaurants in the borough "Bronx"
+db.restaurants.insertMany([
+  { restaurant_id: 1, name: "Bronx Eatery 1", borough: "Bronx", cuisine: "Indian" },
+  { restaurant_id: 2, name: "Bronx Eatery 2", borough: "Bronx", cuisine: "Italian" },
+  { restaurant_id: 3, name: "Bronx Eatery 3", borough: "Bronx", cuisine: "Mexican" },
+  { restaurant_id: 4, name: "Bronx Eatery 4", borough: "Bronx", cuisine: "Chinese" },
+  { restaurant_id: 5, name: "Bronx Eatery 5", borough: "Bronx", cuisine: "Thai" },
+  { restaurant_id: 6, name: "Bronx Eatery 6", borough: "Bronx", cuisine: "Japanese" },
+  { restaurant_id: 7, name: "Bronx Eatery 7", borough: "Bronx", cuisine: "Korean" },
+  { restaurant_id: 8, name: "Bronx Eatery 8", borough: "Bronx", cuisine: "Greek" },
+  { restaurant_id: 9, name: "Bronx Eatery 9", borough: "Bronx", cuisine: "French" },
+  { restaurant_id: 10, name: "Bronx Eatery 10", borough: "Bronx", cuisine: "American" }
+])
+
+// 3. Display the first 5 restaurants in the borough "Bronx"
+db.restaurants.find({ borough: "Bronx" }).limit(5)
+
+// 4. Display the next 5 restaurants in the borough "Bronx" (skip first 5)
+db.restaurants.find({ borough: "Bronx" }).skip(5).limit(5)

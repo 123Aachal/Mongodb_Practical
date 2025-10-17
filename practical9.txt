@@ -1,0 +1,45 @@
+// Use your database (e.g., restaurantDB)
+use restaurantDB
+
+// Insert sample data into restaurants collection
+db.restaurants.insertMany([
+  {
+    building_number: "123",
+    street_name: "MG Road",
+    zip_code: "400001",
+    coordinates: { longitude: 73.8567, latitude: 18.5204 },
+    borough: "Mumbai",
+    cuisine_type: "Indian",
+    grades: [
+      { date: ISODate("2024-01-15"), grade: "A", score: 95 },
+      { date: ISODate("2023-06-10"), grade: "B", score: 88 }
+    ]
+  },
+  {
+    building_number: "45",
+    street_name: "Brigade Road",
+    zip_code: "560001",
+    coordinates: { longitude: 77.5946, latitude: 12.9716 },
+    borough: "Bangalore",
+    cuisine_type: "Continental",
+    grades: [
+      { date: ISODate("2024-02-20"), grade: "A", score: 92 },
+      { date: ISODate("2023-08-18"), grade: "A", score: 90 }
+    ]
+  },
+  {
+    building_number: "67",
+    street_name: "Connaught Place",
+    zip_code: "110001",
+    coordinates: { longitude: 77.2167, latitude: 28.6667 },
+    borough: "Delhi",
+    cuisine_type: "Chinese",
+    grades: [
+      { date: ISODate("2023-12-05"), grade: "B", score: 85 },
+      { date: ISODate("2023-05-22"), grade: "C", score: 75 }
+    ]
+  }
+])
+
+// Find and display all restaurants
+db.restaurants.find()

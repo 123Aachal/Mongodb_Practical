@@ -1,0 +1,25 @@
+// Use database
+use restaurantDB
+
+// Insert sample data
+db.restaurants.insertMany([
+  { restaurant_id: 1, name: "Wilson's Diner", borough: "Manhattan", cuisine: "American" },
+  { restaurant_id: 2, name: "Green Garden", borough: "Queens", cuisine: "Vegetarian" },
+  { restaurant_id: 3, name: "Spice Hub", borough: "Brooklyn", cuisine: "Indian" },
+  { restaurant_id: 4, name: "China Palace", borough: "Bronx", cuisine: "Chinese" },
+  { restaurant_id: 5, name: "Wild Orchid", borough: "Manhattan", cuisine: "Thai" }
+])
+
+// 1. Find restaurants which do NOT prepare 'American' or 'Chinese' cuisine:
+
+db.restaurants.find(
+  { cuisine: { $nin: ["American", "Chinese"] } },
+  { restaurant_id: 1, name: 1, borough: 1, cuisine: 1, _id: 0 }
+)
+
+// 2. Find restaurants whose name starts with 'Wil':
+
+db.restaurants.find(
+  { name: /^Wil/ },
+  { restaurant_id: 1, name: 1, borough: 1, cuisine: 1, _id: 0 }
+)

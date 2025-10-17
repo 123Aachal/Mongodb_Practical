@@ -1,0 +1,47 @@
+// Use database
+use restaurantDB
+
+// Insert sample data
+db.restaurants.insertMany([
+  {
+    restaurant_id: 1,
+    name: "Wilson's Diner",
+    borough: "Manhattan",
+    cuisine: "American",
+    address: {
+      building: "123",
+      street: "5th Avenue",
+      zipcode: "10001",
+      coord: [ -73.9557413, 40.7720266 ]  // Double values
+    }
+  },
+  {
+    restaurant_id: 2,
+    name: "Green Garden",
+    borough: "Queens",
+    cuisine: "Vegetarian",
+    address: {
+      building: "456",
+      street: "Main Street",
+      zipcode: "11354",
+      coord: [ "-73.9874", "40.7359" ]  // Strings, not Doubles
+    }
+  },
+  {
+    restaurant_id: 3,
+    name: "Spice Hub",
+    borough: "Brooklyn",
+    cuisine: "Indian",
+    address: {
+      building: "789",
+      // street missing intentionally here
+      zipcode: "11211"
+    }
+  }
+])
+
+// Query 1: Find restaurants missing 'address.street'
+db.restaurants.find({ "address.street": { $exists: false } })
+
+// Query 2: Find restaurants where 'address.coord' array contains Double type values
+db.restaurants.find({ "address.coord": { $type: "double" } })

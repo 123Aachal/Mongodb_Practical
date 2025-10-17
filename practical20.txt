@@ -1,0 +1,18 @@
+// Use database
+use restaurantDB
+
+// Insert sample records
+db.restaurants.insertMany([
+  { restaurant_id: 1, name: "Bronx Diner", borough: "Bronx", cuisine: "American" },
+  { restaurant_id: 2, name: "Queens Grill", borough: "Queens", cuisine: "Chinese" },
+  { restaurant_id: 3, name: "Brooklyn Pizza", borough: "Brooklyn", cuisine: "Italian" },
+  { restaurant_id: 4, name: "Staten Island Eatery", borough: "Staten Island", cuisine: "Mexican" },
+  { restaurant_id: 5, name: "Manhattan Deli", borough: "Manhattan", cuisine: "American" },
+  { restaurant_id: 6, name: "Harlem Cafe", borough: "Harlem", cuisine: "Caribbean" }
+])
+
+// Query: Find restaurants NOT in Staten Island, Queens, Bronx, or Brooklyn
+db.restaurants.find(
+  { borough: { $nin: ["Staten Island", "Queens", "Bronx", "Brooklyn"] } },
+  { restaurant_id: 1, name: 1, borough: 1, cuisine: 1, _id: 0 }
+)

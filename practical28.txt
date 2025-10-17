@@ -1,0 +1,39 @@
+// Use database
+use restaurantDB
+
+// Insert sample data
+db.restaurants.insertMany([
+  {
+    restaurant_id: 1,
+    name: "Monalisa Cafe",
+    borough: "Manhattan",
+    cuisine: "Italian",
+    address: {
+      coord: [-73.9557413, 40.7720266]
+    }
+  },
+  {
+    restaurant_id: 2,
+    name: "Harmony Diner",
+    borough: "Queens",
+    cuisine: "American",
+    address: {
+      coord: [-73.9874, 40.7359]
+    }
+  },
+  {
+    restaurant_id: 3,
+    name: "Sunset Grill",
+    borough: "Brooklyn",
+    cuisine: "Mexican",
+    address: {
+      coord: [-73.9934, 40.7218]
+    }
+  }
+])
+
+// Query: Find name, borough, longitude, latitude, and cuisine for restaurants with 'mon' in the name
+db.restaurants.find(
+  { name: { $regex: "mon", $options: "i" } },
+  { name: 1, borough: 1, "address.coord": 1, cuisine: 1, _id: 0 }
+)

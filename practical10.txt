@@ -1,0 +1,43 @@
+// Use database
+use restaurantDB
+
+// Insert sample data into restaurants collection
+db.restaurants.insertMany([
+  {
+    restaurant_id: 101,
+    name: "Spice Villa",
+    borough: "Mumbai",
+    cuisine: "Indian",
+    building_number: "123",
+    street_name: "MG Road",
+    zip_code: "400001",
+    coordinates: { longitude: 73.8567, latitude: 18.5204 },
+    grades: [
+      { date: ISODate("2024-01-15"), grade: "A", score: 95 },
+      { date: ISODate("2023-06-10"), grade: "B", score: 88 }
+    ]
+  },
+  {
+    restaurant_id: 102,
+    name: "Continental Delight",
+    borough: "Bangalore",
+    cuisine: "Continental",
+    building_number: "45",
+    street_name: "Brigade Road",
+    zip_code: "560001",
+    coordinates: { longitude: 77.5946, latitude: 12.9716 },
+    grades: [
+      { date: ISODate("2024-02-20"), grade: "A", score: 92 },
+      { date: ISODate("2023-08-18"), grade: "A", score: 90 }
+    ]
+  }
+])
+
+// 1. Display all documents in the restaurants collection
+db.restaurants.find()
+
+// 2. Display only restaurant_id, name, borough, and cuisine fields for all documents
+db.restaurants.find(
+  {},
+  { restaurant_id: 1, name: 1, borough: 1, cuisine: 1, _id: 0 }
+)

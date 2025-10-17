@@ -1,0 +1,20 @@
+// Use database
+use restaurantDB
+
+// Insert sample records
+db.restaurants.insertMany([
+  { restaurant_id: 1, name: "Spice Villa", borough: "Mumbai", cuisine: "Indian", grades: [ { date: "2024-01-15", grade: "A", score: 92 } ] },
+  { restaurant_id: 2, name: "Bronx Diner", borough: "Bronx", cuisine: "American", grades: [ { date: "2024-03-12", grade: "A", score: 95 } ] },
+  { restaurant_id: 3, name: "Green Garden", borough: "Delhi", cuisine: "Chinese", grades: [ { date: "2024-05-10", grade: "A", score: 88 } ] },
+  { restaurant_id: 4, name: "Tandoori Flames", borough: "Brooklyn", cuisine: "Indian", grades: [ { date: "2024-04-10", grade: "A", score: 90 } ] },
+  { restaurant_id: 5, name: "Veggie Delight", borough: "Pune", cuisine: "Vegetarian", grades: [ { date: "2024-02-20", grade: "B", score: 80 } ] }
+])
+
+    
+// Query to find restaurants:
+
+db.restaurants.find({
+  cuisine: { $ne: "American" },
+  "grades.grade": "A",
+  borough: { $ne: "Brooklyn" }
+}).sort({ cuisine: -1 })

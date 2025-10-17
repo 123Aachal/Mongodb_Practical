@@ -1,0 +1,7 @@
+{name:"Bronx Diner",borough:"Bronx",cuisine:"American"},
+{name:"Dragon Palace",borough:"Bronx",cuisine:"Chinese"},
+{name:"Pizza King",borough:"Bronx",cuisine:"Italian"},
+{name:"Tandoori spice",borough:"Manhatta",cuisine:"Indian"},
+{name:"Burger Town",borough:"Bronx",cuisine:"American"},
+{name:"Great Wall",borough:"Queens",cuisine:"Chinese"}
+]);

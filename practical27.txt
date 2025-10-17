@@ -1,0 +1,42 @@
+// Use database
+use restaurantDB
+
+// Insert sample data
+db.restaurants.insertMany([
+  {
+    restaurant_id: 1,
+    name: "Wilson's Diner",
+    borough: "Manhattan",
+    cuisine: "American",
+    grades: [
+      { date: new Date("2023-01-01"), grade: "A", score: 14 },
+      { date: new Date("2023-02-01"), grade: "B", score: 21 }
+    ]
+  },
+  {
+    restaurant_id: 2,
+    name: "Green Garden",
+    borough: "Queens",
+    cuisine: "Vegetarian",
+    grades: [
+      { date: new Date("2023-01-05"), grade: "A", score: 15 },
+      { date: new Date("2023-02-10"), grade: "A", score: 28 }
+    ]
+  },
+  {
+    restaurant_id: 3,
+    name: "Spice Hub",
+    borough: "Brooklyn",
+    cuisine: "Indian",
+    grades: [
+      { date: new Date("2023-01-12"), grade: "C", score: 13 },
+      { date: new Date("2023-02-15"), grade: "B", score: 19 }
+    ]
+  }
+])
+
+// Query: Find restaurant_id, name, and grades for restaurants where any grade's score % 7 == 0
+db.restaurants.find(
+  { "grades.score": { $mod: [7, 0] } },
+  { restaurant_id: 1, name: 1, grades: 1, _id: 0 }
+)
